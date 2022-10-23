@@ -23,7 +23,7 @@
 
   <body>
     <div>
-     <?php include("headers.php"); ?>
+   
     </div>
 
     <div class="container tm-mt-big tm-mb-big">
@@ -32,16 +32,16 @@
           <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
             <div class="row">
               <div class="col-12 text-center">
-                <h2 class="tm-block-title mb-4">Welcome to Dashboard, Login</h2>
+                <h1 class="tm-block-title mb-4">Login Here!</h1>
               </div>
             </div>
             <div class="row mt-2">
               <div class="col-12">
-                <form action="index.php" method="post" class="tm-login-form">
+                <form action="" method="post" class="tm-login-form">
                   <div class="form-group">
-                    <label for="username">Email adress</label>
+                    <label for="username">User name</label>
                     <input
-                      name="email"
+                      name="name"
                       type="text"
                       class="form-control validate"
                       id="username"
@@ -80,18 +80,18 @@ if(isset($_POST["login"]))
 
 
 
-$email = $_POST["email"];
+$name = $_POST["name"];
 $psw = $_POST["psw"];
 
-$query = "SELECT `u_id`, `name` , `role` FROM `users` WHERE  `email` = '{$email}' AND `passwords` = '{$psw}'";
+$query = "SELECT `u_id`, `name` , `role` FROM `users` WHERE  `name` = '{$name}' AND `passwords` = '{$psw}'";
 $result =  mysqli_query($conn,$query);
 
 if(mysqli_num_rows($result)>0)
 {
   while($row = mysqli_fetch_assoc($result))
   {
-      // session_start();
-
+      session_start();
+      $_SESSION["email"] = $row["email"];
       $_SESSION["name"] = $row["name"];
       $_SESSION["u_id"] = $row["u_id"];
       $_SESSION["role"] = $row["role"];
@@ -118,7 +118,6 @@ else
         </div>
       </div>
     </div>
-    <?php include("footer.php"); ?>
     <script src="js/jquery-3.3.1.min.js"></script>
     <!-- https://jquery.com/download/ -->
     <script src="js/bootstrap.min.js"></script>

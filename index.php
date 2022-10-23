@@ -18,10 +18,8 @@
 	https://templatemo.com/tm-524-product-admin
 	-->
 </head>
-
 <body id="reportsPage">
-    <div class="" id="home">
-        <?php include("headers.php"); ?>
+   <?php include("headers.php"); ?>
 
         <div class="container">
             <div class="row">

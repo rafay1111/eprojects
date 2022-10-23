@@ -1,7 +1,17 @@
-<nav class="navbar navbar-expand-xl">
+
+ <?php
+session_start();
+if(!isset($_SESSION['name'])){
+    header("location:login.php");
+  }
+?>
+
+
+<div class="" id="home">
+    <nav class="navbar navbar-expand-xl">
             <div class="container h-100">
                 <a class="navbar-brand" href="index.php">
-                    <h1 class="tm-site-title mb-0">Product Admin</h1>
+                    <h1 class="tm-site-title mb-0"><?php echo $_SESSION["name"]; ?></h1>
                 </a>
                 <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,6 +50,13 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link" href="testing.php">
+                                <i class="fas fa-cog"></i>
+                                Tested products
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link" href="accounts.php">
                                 <i class="far fa-user"></i>
                                 Accounts
@@ -62,7 +79,7 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link d-block" href="login.php">
+                            <a class="nav-link d-block" href="logout.php">
                                 Admin, <b>Logout</b>
                             </a>
                         </li>

@@ -22,17 +22,31 @@
 	https://templatemo.com/tm-524-product-admin
 	-->
   </head>
-
   <body>
-  <?php include("headers.php"); ?>
-
+  <?php include("headers.php");
+        include("config.php"); 
+  ?>
+  <?php 
+  $query = "SELECT `title` , `description` , `maker` , `department` , `p_code` FROM `products`";
+  $result = mysqli_query($conn,$query);
+  if(!$result){
+    echo "error";
+  }  
+  ?>
     <div class="container tm-mt-big tm-mb-big">
       <div class="row">
-        <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+        <div class="col-xl-9 col-lg-10 col-md-8 col-sm-8 mx-auto">
           <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
             <div class="row">
               <div class="col-12">
-                <h2 class="tm-block-title d-inline-block">Add Product</h2>
+
+        
+
+
+
+
+
+                <h2 class="tm-block-title d-inline-block">Test your Products here!</h2>
               </div>
             </div>
             <div class="row tm-edit-product-row">
@@ -42,11 +56,11 @@
                   <div class="form-group mb-12">
                     <label
                       for="title"
-                      >Product title
+                      >Tester Name
                     </label>
                     <input
                       id="name"
-                      name="title"
+                      name="tester_name"
                       type="text"
                       class="form-control validate"
                       required
@@ -56,23 +70,23 @@
                   <div class="form-group mb-12">
                     <label
                       for="description"
-                      >Description</label
+                      >Remarks</label
                     >
-                    <textarea
+                    <input
                       class="form-control validate"
                       rows="3"
-                      name="description"
+                      name="Remarks"
                       required
-                    ></textarea>
+                    ></input>
                   </div>
                   <div class="form-group mb-12">
                     <label
                       for="maker"
-                      >Product maker
+                      >Result
                     </label>
                     <input
                       id="name"
-                      name="maker"
+                      name="results"
                       type="text"
                       class="form-control validate"
                       required
@@ -81,11 +95,11 @@
                   <div class="form-group mb-12">
                     <label
                       for="department"
-                      >Department
+                      >Status
                     </label>
                     <input
                       id="name"
-                      name="department"
+                      name="status"
                       type="text"
                       class="form-control validate"
                       required
@@ -94,7 +108,7 @@
                   <div class="form-group mb-12">
                     <label
                       for="testing"
-                      >Product testing
+                      >type of testing
                     </label>
                     <input
                       id="name"
@@ -103,112 +117,23 @@
                       class="form-control validate"
                       required
                     />
-                  </div>
-                  <div class="form-group mb-12">
-                    <label
-                      for="code"
-                      >Product code
-                    </label>
-                    <input
-                      id="name"
-                      name="code"
-                      type="text"
-                      class="form-control validate"
-                      required
-                    />
-                  </div>
-                 
-                        
-                  </div>
-                  
-              </div>
-              <!-- <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-                <div class="tm-product-img-dummy mx-auto">
-                  <i
-                    class="fas fa-cloud-upload-alt tm-upload-icon"
-                    onclick="document.getElementById('fileInput').click();"
-                  ></i>
-                </div>
-                <div class="custom-file mt-3 mb-3">
-                  <input id="fileInput" type="file" style="display:none;" />
-                  <input
-                    type="button"
-                    class="btn btn-primary btn-block mx-auto"
-                    value="UPLOAD PRODUCT IMAGE"
-                    onclick="document.getElementById('fileInput').click();"
-                  />
-                </div>
-              </div> -->
+                  </div>                      
+                  </div>                 
+            </div>            
               <div class="col-12">
-                <button type="submit" name="add" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
+                <button type="submit" name="add" class="btn btn-primary btn-block text-uppercase">Enter</button>
               </div>
             </form>
-
-
-
-<?php
-
-include("config.php");
-
-if(isset($_POST['add']))
-{
-  $title = $_POST['title'];
-  $desc = $_POST['description'];
-  $maker = $_POST['maker'];
-  $depart = $_POST['department'];
-  $code = $_POST['code'];
-
-  $query="INSERT INTO `products`(`title`, `description`, `maker`, `department`, `p_code`) VALUES ('{$title}','{$desc}','{$maker}','{$depart}','{$code}')";
-  $result=mysqli_query($conn,$query);
-  if($result){
-    echo '<script>alert("Product Added...")</script>';
-    // header("location:http://localhost/eprojects/products.php");
-  }else{
-    echo "sorry";
-  }
- 
-}
-
-error_reporting(0);
-
-
-?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
           </div>
         </div>
+
+
+
+
+
+
+        
       </div>
     </div>
  <?php include("footer.php"); ?>
